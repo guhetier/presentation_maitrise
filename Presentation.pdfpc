@@ -1,0 +1,78 @@
+[duration]
+30
+[last_minutes]
+2
+[notes]
+### 4
+
+Peacemake = système critique
+
+Dans ce modèle : redondance sur les batteries.
+But : Assurer que les batteries ne sont pas vides toutes les deux.
+
+Pourquoi ce système ? Il met en évidence une faiblesse dans les méthodes de vérifications actuelles
+(i.e : dur à spécifier)### 5
+
+Code des batteries du peacemake :
+
+- 2 threads, un par batterie
+
+- Contrôlent le rythme d'utilisation des batteries
+
+- Modèle naïf pour les besoins de l'exemple
+
+- On veut éviter que les deux batteries se rechargent en même temps### 7
+
+Méthodes formelles vs test :
+
+Test -> pas complet, encore pire dans le cas concurrent
+(cas de SQL Lite, plus de test de de code)
+
+Principe de model-checking (logiciel) :
+
+Spécification pour indiquer les propriétés à prouver
+Modèle du système pour le représenter de manière simple
+Exploration exhaustive du système
+
+Principales étapes sources d'erreur : la modélisation (mais automatisée dans le cas logiciel),
+la spécification (si on demande pas la bonne chose, on a pas le résultat attendu)
+
+On va s'intéresser à partie "spécification".### 9
+
+Autre méthode de spécification : LTL (Linear Temporal Logic)
+
+Permet de spécifier une évolution au cours du temps, et des relations entre des évènements.
+
+On prend tout les états dans lesquels va être le programme en succession (trace).
+Presenter les trois opérateurs.
+
+On peut ensuite les composer pour spécifier notre problème de batterie### 10
+
+
+P.A : les p, q utilisés dans les expressions précédentes.
+
+Le problème : adapté à des évènements hauts niveaux, pas à du code### 11
+
+Autre formalisme de spécification : Linear Temporal Logic
+
+Permet de spécifier un comportement au cours du temps, et des relations entre des propositions atomiques### 13
+
+
+1) Il peut y avoir plusieurs variables locales du même nom, il va falloir les différencier
+
+2) Comment désigner les positions dans le code source ? Comment les intégrer dans LTL ?
+
+3) Le gros point dont on va parler### 17
+
+
+Mettre en évidence que maintenant, la proposition atomique est définie dans tout le programme### 19
+
+
+- parler des autres intérêt
+
+1) Positions : permet de les intégrer en même temps, pas besoin de p.a en plus
+
+2) Intervalles : sinon, utiliser la logiques est nécessaire, ce qui rend la vérification plus complexe
+
+3) Autres approches avec valeur par défaut, mais seulement lorsque la variable n'est pas définie : pas adaptée
+pour le cas logiciel
