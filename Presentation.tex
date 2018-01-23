@@ -5,6 +5,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{soul}
+\usepackage{colortbl}
 
 \usepackage[french]{babel}
 
@@ -947,7 +948,7 @@ void* bat2(void* d) {
     \begin{itemize}
     \item Modélisation
     \item Explosion combinatoire
-    \item \textbf{Spécification}
+    \item Spécification
     \end{itemize}
   \end{alertblock}
   \end{columns}
@@ -1059,15 +1060,18 @@ void* bat1(void* d) {
 Scénario de test           & CBMC                 & ESBMC            & Résulat attendu \\
 \hline
 answer\_simple             & ERROR MAYBE          & ERROR MAYBE      & ERROR MAYBE     \\
-answer\_simple\_valid      & \textbf{ERROR MAYBE} & VALID MAYBE      & VALID MAYBE     \\
+\rowcolor{light-gray}
+  answer\_simple\_valid      & \textcolor{red}{\textbf{ERROR MAYBE}} & VALID MAYBE      & VALID MAYBE     \\
 battery\_simple            & ERROR SURE           & ERROR SURE       & ERROR SURE      \\
+\rowcolor{light-gray}
 battery\_var               & ERROR SURE           & \textbf{*}\footnote{Erreur à l'exécution}& ERROR SURE      \\
 crossing\_exclusive\_green & VALID MAYBE          & VALID MAYBE      & VALID MAYBE     \\
 crossing\_exclusive\_mutex & VALID MAYBE          & VALID MAYBE      & VALID MAYBE     \\
 crossing\_GF\_green        & ERROR MAYBE          & ERROR MAYBE      & ERROR MAYBE     \\
 crossing\_order            & VALID MAYBE          & VALID MAYBE      & VALID MAYBE     \\
 prod\_cons\_mutex          & VALID MAYBE          & VALID MAYBE      & VALID MAYBE     \\
-prod\_cons\_simple         & ERROR SURE           & \textbf{VALID SURE} & ERROR SURE      \\
+\rowcolor{light-gray}
+  prod\_cons\_simple         & ERROR SURE           & \textcolor{red}{\textbf{VALID SURE}} & ERROR SURE      \\
 race                       & ERROR MAYBE          & ERROR MAYBE      & ERROR MAYBE     \\
 \hline
 \end{tabular}
@@ -1086,14 +1090,17 @@ race                       & ERROR MAYBE          & ERROR MAYBE      & ERROR MAY
 Scénario de test           & Temps (s) & Mémoire (MB) & Temps (s) & Mémoire (MB) \\
 \hline
 answer\_simple             & 0.87      & 42           & 5.57      & 56           \\
+\rowcolor{light-gray}
 answer\_simple\_valid      & 0.81      & 41           & 12.91     & 72           \\
 battery\_simple            & 1.07      & 42           & 13.95     & 61           \\
+\rowcolor{light-gray}
 battery\_var               & 666.04    & 954          & N/A       & OOM          \\
 crossing\_exclusive\_green & 2.93      & 44           & 32.12     & 119          \\
 crossing\_exclusive\_mutex & 1.73      & 44           & 32.20     & 120          \\
 crossing\_GF\_green        & 1.99      & 46           & 41.70     & 117          \\
 crossing\_order            & 1.02      & 40           & 11.62     & 56           \\
 prod\_cons\_mutex          & 10,046.32 & 593          & 229,99    & 28           \\
+\rowcolor{light-gray}
 prod\_cons\_simple         & 1.70      & 52           & 454.00    & 2711         \\
 race                       & 1.08      & 41           & 5.65      & 28           \\
 \hline
