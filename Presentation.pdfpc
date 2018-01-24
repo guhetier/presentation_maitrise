@@ -2,77 +2,159 @@
 30
 [last_minutes]
 2
+[end_user_slide]
+38
+[font_size]
+26
 [notes]
+### 1
+
+S0 :
+### 2
+S1:
+
+- Systèmes critiques
+
+- Omniprésents
+
+- Risque d'erreur fort
+
+- Concurrence
+### 3
+S2:
+
+- Fil rouge
+
+- Mets en lumière le problème auquel on va s'attquer aujourd'hui
 ### 4
+S3:
 
-Peacemake = système critique
+Code des batteries du systèmes
 
-Dans ce modèle : redondance sur les batteries.
-But : Assurer que les batteries ne sont pas vides toutes les deux.
+Lignes en rouge = recharge -> ne doit pas avoir lieux en même temps
 
-Pourquoi ce système ? Il met en évidence une faiblesse dans les méthodes de vérifications actuelles
-(i.e : dur à spécifier)### 5
+Exclusion mutuelle### 5
+S3.5:
 
-Code des batteries du peacemake :
+1) Test du système : insuffisant + concurrence
 
-- 2 threads, un par batterie
+2) Méthode formelles : preuve de validité### 6
+S4:
 
-- Contrôlent le rythme d'utilisation des batteries
+*** On va s'intéresser à la spécification ***### 7
+S4.5:
 
-- Modèle naïf pour les besoins de l'exemple
+Problème du jour : spécification limité
 
-- On veut éviter que les deux batteries se rechargent en même temps### 7
+=> on ne peut pas dire suffisament avec### 8
+S5:
 
-Méthodes formelles vs test :
+Methode la plus utilisée
 
-Test -> pas complet, encore pire dans le cas concurrent
-(cas de SQL Lite, plus de test de de code)
+Instinctive, connue### 9
+S6:
 
-Principe de model-checking (logiciel) :
+Limite :
+- relation temporelle
+- relation entre threads### 10
+S7:
 
-Spécification pour indiquer les propriétés à prouver
-Modèle du système pour le représenter de manière simple
-Exploration exhaustive du système
+- évolution d'un programme
 
-Principales étapes sources d'erreur : la modélisation (mais automatisée dans le cas logiciel),
-la spécification (si on demande pas la bonne chose, on a pas le résultat attendu)
+- p,q : formule logiques classiques,
+état du programme### 11
+S8:
 
-On va s'intéresser à partie "spécification".### 9
+Proposition atomiques = prop de base sur l'état.
 
-Autre méthode de spécification : LTL (Linear Temporal Logic)
+Limitations
+### 12
+S8.1
 
-Permet de spécifier une évolution au cours du temps, et des relations entre des évènements.
+*** Plan de la présentation ***### 13
+S8.2
+### 14
+S9:
 
-On prend tout les états dans lesquels va être le programme en succession (trace).
-Presenter les trois opérateurs.
+1) et 2) détaillé dans le rapport, pas au coeur
+de notre contribution
 
-On peut ensuite les composer pour spécifier notre problème de batterie### 10
+3) on va s'attarder là dessus### 15
+S9:
+### 16
+S10:
 
+- Formule globale => PA globale
 
-P.A : les p, q utilisés dans les expressions précédentes.
+- e definie localement### 17
+S11:
 
-Le problème : adapté à des évènements hauts niveaux, pas à du code### 11
+Def PA en 3 partie
 
-Autre formalisme de spécification : Linear Temporal Logic
+** Ne pas manger sur slide suivante **### 18
+S12:
 
-Permet de spécifier un comportement au cours du temps, et des relations entre des propositions atomiques### 13
+Problème de définition résolu
 
+Délimitation zone validité par labels### 19
+S13:
 
-1) Il peut y avoir plusieurs variables locales du même nom, il va falloir les différencier
+JSON = JavaScript Object Notation
 
-2) Comment désigner les positions dans le code source ? Comment les intégrer dans LTL ?
+Diriger attention sur lignes utiles### 20
+S14:
 
-3) Le gros point dont on va parler### 17
+Retour sur pacemaker
 
+Souligner la def des zones par les labels### 21
+S15:
 
-Mettre en évidence que maintenant, la proposition atomique est définie dans tout le programme### 19
+F.ev constante
 
+Zone validité exprime position### 22
+S16:
 
-- parler des autres intérêt
+Divine : pas de zone de validité.
+Pa = position ou expression.
+Manipulation des positions par les opérateurs
+logiques### 23
+S16.5:### 24
+S17:
 
-1) Positions : permet de les intégrer en même temps, pas besoin de p.a en plus
+** Faible support de LTL **### 25
+S17.5:
 
-2) Intervalles : sinon, utiliser la logiques est nécessaire, ce qui rend la vérification plus complexe
+On va voir la méthode classique de
+vérification LTL### 26
+S18:
 
-3) Autres approches avec valeur par défaut, mais seulement lorsque la variable n'est pas définie : pas adaptée
-pour le cas logiciel
+** Permet de maniupler une prop LTL
+facilement **### 27
+S19:
+
+/!\ négation de la prop### 28
+S20:
+### 29
+S21:
+
+Différence = produit fait dans le code### 30
+S22:### 31
+S23:### 32
+S24.1:### 33
+S24.2:
+### 34
+S24.3:
+
+3) Cas classique : détecter cycle
+Ici, pas possible de l'intérieur du code
+
+==> limitation à des traces finies
+
+==> autre problème### 35
+S25:
+
+### 36
+S26:
+
+Bien introduire. Sert à apporter de la nuance
+dans les résultats.
